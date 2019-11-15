@@ -1,23 +1,44 @@
 function Rack(){
     this.balls = []
+    leftIndex = 0;
+    rightIndex = 1
 }
 
 Rack.prototype.add = function(number){
     this.balls.push(number)
     }
 
-Rack.prototype.sort = function(){
-    newArray = []
-    let a = this.balls[0]
-    console.log(a)
-    let b = this.balls[1]
-    console.log(b)
-    if (a > b){
-        console.log(this.balls.slice(1))
-       newArray = this.balls.slice(1)
-       newArray.push(a)
-       console.log(newArray)
-       
+Rack.prototype.findMiddle = function(){
+    let middle  = Math.floor(this.balls.length/2)
+    return this.balls[middle]
     }
+
+Rack.prototype.swap = function(){
+    let temp = this.balls[leftIndex];
+    this.balls[leftIndex] = this.balls[rightIndex];
+    this.balls[rightIndex] = temp;
+    return this.balls
+}
+
+Rack.prototype.sort = function(){
+    let newArray = []
+    let a = 0;
+    let A = this.balls[a]
+
+    let B = this.balls[a+1]
+
+    
+    while(a <= this.balls.length ){
+        // console.log("balls.length = " + this.balls.length)
+        if(A > B){
+            newArray = this.balls.slice(a+1)
+            // console.log("this.balls after slice = " + this.balls.slice(a+1))
+            newArray.push(A)
+            // console.log(newArray)
+            a++
+        
+    };
+    // console.log(newArray)
     return newArray
+    }
 }
