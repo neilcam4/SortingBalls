@@ -1,0 +1,3 @@
+function Rack(){
+    this.balls = []
+}
